@@ -1,0 +1,56 @@
+@baseUrl = http://localhost:5180
+@token =
+
+### Get a development JWT (alice, bob, or admin)
+POST {{baseUrl}}/auth/token
+Content-Type: application/json
+
+{
+  "username": "alice",
+  "password": "alice-dev-password"
+}
+
+### Create a workbook
+POST {{baseUrl}}/graphql
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "mutation { createWorkbook(name: \"Personal\") { id name ownerId } }"
+}
+
+### Add a note to an owned workbook
+POST {{baseUrl}}/graphql
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "mutation { createNote(workbookId: 1, title: \"Example\", content: \"A private note\") { id title content } }"
+}
+
+### Comment on a note in an owned workbook
+POST {{baseUrl}}/graphql
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "mutation { createComment(noteId: 1, content: \"A comment\") { id content authorId } }"
+}
+
+### Read only the authenticated user's workbooks, notes, and comments
+POST {{baseUrl}}/graphql
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "{ workbooks { id name notes { id title content comments { id content authorId } } } }"
+}
+
+### Admin-only aggregate query (admin token required)
+POST {{baseUrl}}/graphql
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "query": "{ workbookCount }"
+}

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="NRG.Api.Tests/NRG.Api.Tests.csproj" />
+  <Project Path="NRG.Api/NRG.Api.csproj" Id="c60b96f4-8985-41c0-b36b-4ca29daed5f5" />
+</Solution>
