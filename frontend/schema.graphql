@@ -1,0 +1,84 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  helloWorld: HelloData! @cost(weight: "10")
+  helloUser: HelloData! @cost(weight: "10")
+  helloAdmin: HelloData! @cost(weight: "10")
+  helloStaff: HelloData! @cost(weight: "10")
+  helloEmployee: HelloData! @cost(weight: "10")
+  workbooks: [Workbook!]! @cost(weight: "10")
+  notes: [Note!]! @cost(weight: "10")
+  comments: [Comment!]! @cost(weight: "10")
+  workbookCount: Int! @cost(weight: "10")
+}
+
+type Mutation {
+  login(username: String!, password: String!): DemoTokenResponse!
+  createWorkbook(name: String!): Workbook! @cost(weight: "10")
+  createNote(workbookId: Int!, title: String!, content: String!): Note!
+    @cost(weight: "10")
+  createComment(noteId: Int!, content: String!): Comment! @cost(weight: "10")
+}
+
+type Comment {
+  id: Int!
+  noteId: Int!
+  note: Note!
+  authorId: String!
+  content: String!
+}
+
+type DemoTokenResponse {
+  accessToken: String!
+  expiresAt: DateTime!
+}
+
+type HelloData {
+  hello: String!
+  timestamp: DateTime!
+}
+
+type Note {
+  id: Int!
+  workbookId: Int!
+  workbook: Workbook!
+  title: String!
+  content: String!
+  comments: [Comment!]!
+}
+
+type Workbook {
+  id: Int!
+  ownerId: String!
+  name: String!
+  notes: [Note!]!
+}
+
+"Defines when a policy shall be executed."
+enum ApplyPolicy {
+  "Before the resolver was executed."
+  BEFORE_RESOLVER
+  "After the resolver was executed."
+  AFTER_RESOLVER
+  "The policy is applied in the validation step before the execution."
+  VALIDATION
+}
+
+"The `DateTime` scalar type represents a date and time with time zone offset information."
+scalar DateTime
+  @specifiedBy(url: "https://scalars.graphql.org/chillicream/date-time.html")
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost(
+  "The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc."
+  weight: String!
+) on
+  | SCALAR
+  | OBJECT
+  | FIELD_DEFINITION
+  | ARGUMENT_DEFINITION
+  | ENUM
+  | INPUT_FIELD_DEFINITION

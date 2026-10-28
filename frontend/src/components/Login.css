@@ -1,0 +1,110 @@
+.login-form {
+  display: grid;
+  gap: 9px;
+}
+
+.login-form label {
+  margin-top: 8px;
+  color: #c3d0db;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.login-form input {
+  width: 100%;
+  min-height: 43px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  color: #eef4f7;
+  background: #0e161f;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.login-form input::placeholder {
+  color: #6f8191;
+}
+
+.login-form input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(109, 224, 189, 0.12);
+}
+
+.button {
+  min-height: 42px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  transition: background 140ms ease, border-color 140ms ease, transform 140ms ease;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  margin-top: 12px;
+  color: #0c1a17;
+  background: var(--accent);
+}
+
+.button-primary:hover:not(:disabled) {
+  background: #87ebcd;
+}
+
+.button-secondary {
+  color: #d8e3eb;
+  border-color: var(--border);
+  background: var(--surface-raised);
+}
+
+.button-secondary:hover:not(:disabled) {
+  border-color: #3a5264;
+  background: #1d2b39;
+}
+
+.form-error {
+  margin: 5px 0 0;
+  color: #ff9a9a;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.account-state {
+  display: grid;
+  gap: 22px;
+}
+
+.signed-in {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.signed-in-icon {
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--accent-dark);
+  font-weight: 700;
+}
+
+.signed-in strong {
+  color: #eff8f5;
+  font-size: 0.9rem;
+}
+
+.signed-in p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
