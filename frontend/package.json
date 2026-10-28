@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:relay": "relay-compiler & vite",
     "build": "tsc -b && vite build",
     "relay": "relay-compiler",
     "schema:export": "node scripts/export-schema.mjs",

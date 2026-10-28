@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="NRG.Api.Tests/NRG.Api.Tests.csproj" />
   <Project Path="NRG.Api/NRG.Api.csproj" Id="c60b96f4-8985-41c0-b36b-4ca29daed5f5" />
+  <Project Path="NRG.AppHost/NRG.AppHost.csproj" Id="e822088e-670c-4767-a550-2d53080a1355" />
 </Solution>

@@ -12,6 +12,15 @@ API can restrict endpoints and GraphQL fields based on a user's role.
 
 The backend and frontend are in `backend` and `frontend`, respectively.
 
+## Run the application
+
+The Aspire AppHost starts the API and frontend together. You’ll need the .NET 10
+SDK, the Aspire CLI, and Node.js installed.
+
+```bash
+aspire start
+```
+
 ## Authentication overview
 
 - The API exposes REST endpoints for login, refresh, and logout. On successful
